@@ -1,0 +1,6 @@
+add go2rtc
+add go2rtc config
+probably don't bother with anything super special, just stream the thing
+(ie stream.vita.what.ever, control.vita.what.ever)
+look at packaging gimx i guess
+look at making sure the uart exists lol

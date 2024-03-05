@@ -1,0 +1,43 @@
+{
+  "nodes": {
+    "common": {
+      "locked": {
+        "lastModified": 1708192618,
+        "narHash": "sha256-itvmiZeB9l7dKcQwDSBKCt05d79yJr46rks8m6br050=",
+        "owner": "stary2001",
+        "repo": "nix-common",
+        "rev": "b7e03997bb3ace79203bc2b62e610e67839c2eda",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stary2001",
+        "repo": "nix-common",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1708702655,
+        "narHash": "sha256-qxT5jSLhelfLhQ07+AUxSTm1VnVH+hQxDkQSZ/m/Smo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c5101e457206dd437330d283d6626944e28794b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "common": "common",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
