@@ -19,7 +19,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           (import ./hardware-configuration.nix)
-          (import ./legacy.nix)
+          (import ./no-grub.nix)
           (import ./nginx.nix)
 
           inputs.common.nixosModules.base
