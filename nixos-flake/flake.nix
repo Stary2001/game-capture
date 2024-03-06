@@ -53,12 +53,12 @@
 
             services.openssh.enable = true;
 
-            users.users.root = { hashedPasswordFile = "/nix/persist/passwords/root"; };
+            users.users.root = { hashedPassword = "$y$j9T$J6Hn9P7o9KnSFHYX4HwY1/$ymgGRaP9WrddORmItFbchjRH7gOUcEXFrcO6BV7nei2"; };
             users.users.stary = {
               isNormalUser = true;
               createHome = true;
               extraGroups = [ "wheel" ];
-              hashedPasswordFile = "/nix/persist/passwords/stary";
+              hashedPassword = "$y$j9T$yDLqPFbKg8FiwR5WUgZnj0$mClgbU5c3.4hflIFXRWnXGDNp3kv36/Z20npoC7U/x/";
             };
 
             services.udev.extraRules = ''
