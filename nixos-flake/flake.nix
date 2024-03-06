@@ -53,8 +53,10 @@
 
             services.openssh.enable = true;
 
+            users.mutableUsers = false;
             users.users.root = { hashedPassword = "$y$j9T$J6Hn9P7o9KnSFHYX4HwY1/$ymgGRaP9WrddORmItFbchjRH7gOUcEXFrcO6BV7nei2"; };
             users.users.stary = {
+              uid = 1000;
               isNormalUser = true;
               createHome = true;
               extraGroups = [ "wheel" ];
@@ -62,7 +64,7 @@
             };
 
             services.udev.extraRules = ''
-              SUBSYSTEM=="net", ACTION=="add", DRIVRES=="r8152", NAME="eth-internal"
+              SUBSYSTEM=="net", ACTION=="add", DRIVERS=="r8152", NAME="eth-internal"
               SUBSYSTEM=="net", ACTION=="add", DRIVERS=="rk_gmac-dwmac", NAME="eth-external"
             '';
 
