@@ -53,10 +53,12 @@
 
             services.openssh.enable = true;
 
+            users.users.root = { hashedPasswordFile = "/nix/persist/passwords/root"; };
             users.users.stary = {
               isNormalUser = true;
               createHome = true;
               extraGroups = [ "wheel" ];
+              hashedPasswordFile = "/nix/persist/passwords/stary";
             };
 
             services.udev.extraRules = ''
