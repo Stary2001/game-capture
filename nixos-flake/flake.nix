@@ -21,8 +21,10 @@
           (import ./hardware-configuration.nix)
           (import ./boot-configuration.nix)
           (import ./nginx.nix)
+          (import ./go2rtc.nix)
 
           inputs.common.nixosModules.base
+          inputs.common.nixosModules.avahi
           inputs.common.nixosModules.auto-upgrade
           inputs.common.nixosModules.wait-online-any
 
@@ -45,10 +47,14 @@
               22 # ssh
               80 # http
               443 # https
+              1984 # temp: go2rtc
+              8555 # webrtc
             ];
 
             networking.firewall.allowedUDPPorts = [
               67 # dhcp
+              8555 # webrtc 
+              51914 # gimx
             ];
 
             services.openssh.enable = true;
@@ -59,7 +65,7 @@
               uid = 1000;
               isNormalUser = true;
               createHome = true;
-              extraGroups = [ "wheel" ];
+              extraGroups = [ "wheel" "video" "plugdev" "dialout" ];
               hashedPassword = "$y$j9T$yDLqPFbKg8FiwR5WUgZnj0$mClgbU5c3.4hflIFXRWnXGDNp3kv36/Z20npoC7U/x/";
             };
 
@@ -67,6 +73,8 @@
               SUBSYSTEM=="net", ACTION=="add", DRIVERS=="r8152", NAME="eth-internal"
               SUBSYSTEM=="net", ACTION=="add", DRIVERS=="rk_gmac-dwmac", NAME="eth-external"
             '';
+
+            hardware.deviceTree.overlays = [ { name = "enable-uart1"; dtsFile = ./enable-uart1.dts; } ];
 
             system.configurationRevision =
               lib.mkIf (inputs.self ? rev) inputs.self.rev;
