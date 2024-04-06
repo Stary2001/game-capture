@@ -1,14 +1,9 @@
 { inputs, lib, config, ... }: {
   networking = {
     useDHCP = false;
-    hostName = "vita"; # Define your hostname.
 
     useNetworkd = true;
-    interfaces = {
-      "end0" = { useDHCP = true; };
-      "enu1" = { useDHCP = true; };
-    };
-
+    # board specific should setup interfaces
     nameservers = [ "8.8.8.8" ];
   };
 
@@ -44,16 +39,6 @@
     hashedPassword =
       "$y$j9T$yDLqPFbKg8FiwR5WUgZnj0$mClgbU5c3.4hflIFXRWnXGDNp3kv36/Z20npoC7U/x/";
   };
-
-  services.udev.extraRules = ''
-    SUBSYSTEM=="net", ACTION=="add", DRIVERS=="r8152", NAME="eth-internal"
-    SUBSYSTEM=="net", ACTION=="add", DRIVERS=="rk_gmac-dwmac", NAME="eth-external"
-  '';
-
-  hardware.deviceTree.overlays = [{
-    name = "enable-uart1";
-    dtsFile = ./enable-uart1.dts;
-  }];
 
   system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
   system.stateVersion = "23.11";
