@@ -12,7 +12,7 @@
     in {
       formatter.x86_64-linux =
         inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt;
-      #formatter.${system} = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
+      formatter.aarch64-linux = inputs.nixpkgs.legacyPackages.aarch64-linux.nixfmt;
 
       nixosConfigurations.default = inputs.nixpkgs.lib.nixosSystem {
         inherit system;
@@ -58,6 +58,8 @@
             ];
 
             services.openssh.enable = true;
+            services.tailscale.enable = true;
+            services.tailscale.useRoutingFeatures = "both";
 
             users.mutableUsers = false;
             users.users.root = { hashedPassword = "$y$j9T$J6Hn9P7o9KnSFHYX4HwY1/$ymgGRaP9WrddORmItFbchjRH7gOUcEXFrcO6BV7nei2"; };
