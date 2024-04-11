@@ -46,5 +46,20 @@
           ({...}: { networking.hostName = "wii"; networking.interfaces.end0.macAddress = "c2:de:b4:2a:cc:2a"; networking.interfaces.enu1.macAddress = "c2:de:b4:2a:cc:2b"; })
         ];
       };
+      nixosConfigurations.wiiu = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          (import ./beelink.nix)
+          (import ./nginx.nix)
+          (import ./go2rtc.nix)
+          (import ./capture.nix)
+
+          inputs.common.nixosModules.base
+          inputs.common.nixosModules.avahi
+          inputs.common.nixosModules.wait-online-any
+          ({...}: { networking.hostName = "wiiu"; })
+        ];
+      };
     };
 }
