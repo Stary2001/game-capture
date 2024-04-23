@@ -61,7 +61,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          (import ./beelink.nix)
+          (import ./wyse.nix)
           (import ./nginx.nix)
           (import ./go2rtc.nix)
           (import ./capture.nix)
