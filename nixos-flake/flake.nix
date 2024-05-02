@@ -67,6 +67,8 @@
           (import ./capture.nix)
 
           inputs.common.nixosModules.base
+          inputs.common.nixosModules.prometheus-exporter
+          inputs.common.nixosModules.loki-ingest
           inputs.common.nixosModules.avahi
           inputs.common.nixosModules.wait-online-any
           ({...}: {
