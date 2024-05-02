@@ -71,6 +71,7 @@
           inputs.common.nixosModules.loki-ingest
           inputs.common.nixosModules.avahi
           inputs.common.nixosModules.wait-online-any
+
           ({...}: {
             networking.hostName = "wiiu";
             services.go2rtc.settings.streams.wiiu = "ffmpeg:device?video= /dev/v4l/by-id/usb-VXIS_Inc_FHD_Capture-video-index0&input_format=yuyv422&video_size=1920x1080#video=h264#hardware=vaapi";
